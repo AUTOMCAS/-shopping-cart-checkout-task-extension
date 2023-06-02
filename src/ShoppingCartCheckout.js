@@ -1,6 +1,9 @@
+const PriceCalculator = require('./PriceCalculator')
+
 class ShoppingCartCheckout {
   constructor() {
     this.shoppingCart = [];
+    this.priceCalculator = new PriceCalculator()
   }
 
   getShoppingCart() {
@@ -8,38 +11,24 @@ class ShoppingCartCheckout {
   }
 
   addProduct(product) {
-    const existingProduct = this.shoppingCart.find(
+    const existingItem = this.shoppingCart.find(
       (item) => item.product === product,
     );
 
-    if (existingProduct) {
-      existingProduct.quantity++;
+    if (existingItem) {
+      existingItem.quantity++;
     } else {
-      const newProduct = {
+      const newItem = {
         product,
         quantity: 1,
       };
-      this.shoppingCart.push(newProduct);
+
+      this.shoppingCart.push(newItem);
     }
   }
 
   calculateTotalPrice() {
-    let total = 0;
-
-    this.shoppingCart.forEach((item) => {
-      if (item.product.code === 'FR1') {
-        const buyOneGetOneFreePrice =
-          Math.ceil(item.quantity / 2) * item.product.price;
-
-        total += buyOneGetOneFreePrice;
-      } else if (item.product.code === 'SR1' && item.quantity >= 3) {
-        
-        total += 4.5 * item.quantity;
-      } else {
-        
-        total += item.product.price * item.quantity;
-      }
-    });
+    const total = this.priceCalculator.calculateTotal(this.shoppingCart)
 
     return total;
   }
