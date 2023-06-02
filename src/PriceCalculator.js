@@ -14,9 +14,10 @@ class PriceCalculator {
 
   calculateOfferPrice(item) {
     if (item.product.offer === 'buyOneGetOneFree') {
-      const buyOneGetOneFreePrice =
+      const totalPrice =
         Math.ceil(item.quantity / 2) * item.product.price;
-      return buyOneGetOneFreePrice;
+        
+      return totalPrice; 
     }
 
     return item.product.price;
