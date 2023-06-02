@@ -1,4 +1,6 @@
-# Shopping Cart Checkout technical challenge
+# Shopping Cart Checkout technical challenge EXTENSION
+
+THIS IS AN EXTENSION OF THE TASK BELOW TAKEN OUTSIDE OF THE ALLOTTED 1-2 HOURS IN THE NAME OF CURIOSITY.
 
 ## Task
 
