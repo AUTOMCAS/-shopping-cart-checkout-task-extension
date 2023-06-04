@@ -14,10 +14,9 @@ class PriceCalculator {
 
   calculateOfferPrice(item) {
     if (item.product.offer === 'buyOneGetOneFree') {
-      const totalPrice =
-        Math.ceil(item.quantity / 2) * item.product.price;
-        
-      return totalPrice; 
+      const totalPrice = Math.ceil(item.quantity / 2) * item.product.price;
+
+      return totalPrice;
     }
 
     return item.product.price;
@@ -27,18 +26,21 @@ class PriceCalculator {
     let total = 0;
 
     shoppingCart.forEach((item) => {
+      if (!item.product.offer && !item.product.discount) {
+        total += item.product.price * item.quantity;
+      }
+
       if (item.product.discount) {
         total += this.calculateDiscountedPrice(item);
-      } else if (item.product.offer) {
+      }
+
+      if (item.product.offer) {
         total += this.calculateOfferPrice(item);
-      } else {
-        total += item.product.price * item.quantity;
       }
     });
 
     return total;
   }
 }
-
 
 module.exports = PriceCalculator;

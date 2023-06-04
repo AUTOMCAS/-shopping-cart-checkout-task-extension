@@ -1,9 +1,10 @@
 const Product = require('./Product');
 
 class Strawberries extends Product {
-  constructor() {
+  constructor(discount, offer) {
     super('SR1', 'Strawberries', 5.0);
-    this.discount = { type: 'multiBuy', quantityRequired: 3, price: 4.5 };
+    this.discount = discount;
+    this.offer = offer;
   }
 }
 

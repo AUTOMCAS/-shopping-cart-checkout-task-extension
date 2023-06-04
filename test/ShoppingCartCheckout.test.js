@@ -6,9 +6,12 @@ const Coffee = require('../src/products/Coffee');
 
 
 describe('ShoppingCartCheckout', () => {
-  const fruitTea = new FruitTea();
-  const strawberries = new Strawberries();
-  const coffee = new Coffee();
+  const strawberriesDiscount = { type: 'multiBuy', quantityRequired: 3, price: 4.5 };
+  const buyOneGetOneFree = "buyOneGetOneFree"
+  
+  const fruitTea = new FruitTea(null, buyOneGetOneFree);
+  const strawberries = new Strawberries(strawberriesDiscount, null);
+  const coffee = new Coffee(null, null);
 
   test('should return shopping cart', () => {
     const shoppingCartCheckout = new ShoppingCartCheckout();

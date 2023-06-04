@@ -1,9 +1,10 @@
 const Product = require('./Product');
 
 class FruitTea extends Product {
-  constructor() {
+  constructor(discount, offer) {
     super('FR1', 'Fruit Tea', 3.11);
-    this.offer = "buyOneGetOneFree"
+    this.discount = discount
+    this.offer = offer
   }
 }
 
