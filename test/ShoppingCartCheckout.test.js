@@ -120,4 +120,18 @@ describe('ShoppingCartCheckout', () => {
 
     expect(shoppingCartCheckout.getTotalPrice()).toEqual('£27.84');
   });
+
+
+  test('should work with any object with the correct product parameters', () => {
+    const shoppingCartCheckout = new ShoppingCartCheckout();
+
+    const product = {code: "TE1",  name: "Tea", price: 3.00, discount: null, offer: "buyOneGetOneFree"}
+
+    shoppingCartCheckout.addProduct(product);
+    shoppingCartCheckout.addProduct(product);
+    shoppingCartCheckout.addProduct(product);
+
+
+    expect(shoppingCartCheckout.getTotalPrice()).toEqual('£6.00');
+  });
 });
