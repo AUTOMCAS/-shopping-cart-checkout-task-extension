@@ -24,6 +24,7 @@ describe('PriceCalculator', () => {
     expect(priceCalculator.calculateOfferPrice(mockItem)).toEqual(6.22);
   });
 
+
   test('should calculate discount price', () => {
     const priceCalculator = new PriceCalculator();
 
@@ -33,6 +34,18 @@ describe('PriceCalculator', () => {
     }
 
     expect(priceCalculator.calculateDiscountedPrice(mockItem)).toEqual(13.5);
+  });
+
+
+  test('should calculate price if no offer or discount ', () => {
+    const priceCalculator = new PriceCalculator();
+
+    const mockItem = {
+      product: coffee,
+      quantity: 3
+    }
+
+    expect(priceCalculator.calculateOfferPrice(mockItem)).toEqual(11.23);
   });
 
 
